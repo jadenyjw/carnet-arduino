@@ -25,14 +25,32 @@ void loop() {
 }
 
 void forward(){
+  analogWrite(enableLeft, 255)
+  analogWrite(enableRight, 255)
   
+  digitalWrite(leftA, HIGH);
+  digitalWrite(leftB, LOW);
+  digitalWrite(rightA, HIGH);
+  digitalWrite(rightB, LOW);
 }
 void left(){
-
+  
+  analogWrite(enableLeft, 153)
+  analogWrite(enableRight, 255)
+  
+  digitalWrite(leftA, HIGH);
+  digitalWrite(leftB, LOW);
+  digitalWrite(rightA, HIGH);
+  digitalWrite(rightB, LOW);
 }
 void right(){
-
+  analogWrite(enableLeft, 153)
+  analogWrite(enableRight, 255)
   
+  digitalWrite(leftA, HIGH);
+  digitalWrite(leftB, LOW);
+  digitalWrite(rightA, HIGH);
+  digitalWrite(rightB, LOW);
 }
 void stop(){
   analogWrite(enableLeft, 0)
