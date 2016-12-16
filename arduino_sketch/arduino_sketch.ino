@@ -6,6 +6,8 @@ int leftB = 9;
 int rightA = 12;
 int rightB = 13;
 
+String ssid = "carnet-wifi";
+String password = "11111111";
 
 void setup() {
   // put your setup code here, to run once:
@@ -17,9 +19,7 @@ void setup() {
     pinMode(leftB, OUTPUT);
     pinMode(rightA, OUTPUT);
     pinMode(rightB, OUTPUT);
-    
-    stop();
-    
+   
     digitalWrite(leftA, HIGH);
     digitalWrite(leftB, LOW);
     digitalWrite(rightA, HIGH);
@@ -28,29 +28,20 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  
-
-  
+ forward();
 }
 
 void forward(){
   analogWrite(enableLeft, 255);
   analogWrite(enableRight, 255);
-  
-
 }
 void left(){
-  
-  analogWrite(enableLeft, 153);
+  analogWrite(enableLeft, 127);
   analogWrite(enableRight, 255);
-  
 }
 void right(){
-  
   analogWrite(enableLeft, 255);
-  analogWrite(enableRight, 153);
-
+  analogWrite(enableRight, 127);
 }
 void stop(){
   analogWrite(enableLeft, 0);
