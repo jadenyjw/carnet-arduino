@@ -1,3 +1,5 @@
+#include <SoftwareSerial.h>
+
 int enableLeft = 10;
 int enableRight = 11;
 
@@ -6,12 +8,15 @@ int leftB = 9;
 int rightA = 12;
 int rightB = 13;
 
-String ssid = "carnet-wifi";
-String password = "11111111";
+SoftwareSerial mySerial(2, 3);
 
 void setup() {
   // put your setup code here, to run once:
-    Serial.begin(9600);
+    Serial.begin(115200);
+    Serial.setTimeout(50);
+    mySerial.begin(115200);
+    mySerial.setTimeout(50);
+    
     pinMode(enableLeft, OUTPUT);
     pinMode(enableRight, OUTPUT);
  
@@ -28,7 +33,26 @@ void setup() {
 }
 
 void loop() {
- forward();
+  
+ if (mySerial.available()) {
+    String direction = mySerial.readString();
+    direction.trim();
+    Serial.print(direction);
+    if (direction.equals("forward")){
+      forward();
+    }
+    else if (direction.equals("left")){
+      left();
+    }
+    else if (direction.equals("right")){
+      right();
+    }
+    
+  }
+  else{
+    //stop();
+  }
+  
 }
 
 void forward(){
